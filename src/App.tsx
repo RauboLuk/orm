@@ -6,7 +6,7 @@ import SignUp from "./components/signUp";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="app">
         <Header />
         <main className="content">
