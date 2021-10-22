@@ -4,7 +4,9 @@ import { object, string, TypeOf } from "zod";
 
 const signUpSchema = object({
   email: string().nonempty("Email is required").email("Invalid email address"),
-  name: string().nonempty("Full name is required").regex(/\S+( +\S+)+/, "Missing last name"),
+  name: string()
+    .nonempty("Full name is required")
+    .regex(/\S+( +\S+)+/, "Missing last name"),
   password: string()
     .nonempty("Password is required")
     .min(8, "Password is too short"),
@@ -27,6 +29,7 @@ const SignUp = () => {
 
   const onSubmit = (values: SignUpInput) => {
     console.log(values);
+    alert("OK");
   };
 
   return (
@@ -56,8 +59,9 @@ const SignUp = () => {
           <p className="input__error">{errors.name?.message}</p>
         </div>
         <div className="form__input">
-          <label htmlFor="password"
-            data-testid="passwordLabel">Password</label>
+          <label htmlFor="password" data-testid="passwordLabel">
+            Password
+          </label>
           <input
             type="password"
             id="password"

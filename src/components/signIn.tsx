@@ -1,14 +1,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object, string, TypeOf } from "zod";
-import "./signIn.css";
 
 const loginSchema = object({
   email: string().email("Invalid email address"),
-  password: string().nonempty("Password is required")
+  password: string().nonempty("Password is required"),
 });
 
-type LoginInput = TypeOf<typeof loginSchema>
+type LoginInput = TypeOf<typeof loginSchema>;
 
 const SignIn = () => {
   const {
@@ -21,6 +20,7 @@ const SignIn = () => {
 
   const onSubmit = (values: LoginInput) => {
     console.log(values);
+    alert("OK");
   };
 
   return (
@@ -33,7 +33,8 @@ const SignIn = () => {
             type="email"
             id="email"
             placeholder="Enter your email address..."
-            {...register("email")} required
+            {...register("email")}
+            required
           />
           <p className="input__error">{errors.email?.message}</p>
         </div>
@@ -43,7 +44,8 @@ const SignIn = () => {
             type="password"
             id="password"
             placeholder="Enter your password..."
-            {...register("password")} required
+            {...register("password")}
+            required
           />
           <p className="input__error">{errors.password?.message}</p>
         </div>
