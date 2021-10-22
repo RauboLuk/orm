@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object, string, TypeOf } from "zod";
+import { Link } from "react-router-dom";
 
 const loginSchema = object({
   email: string().email("Invalid email address"),
@@ -55,9 +56,9 @@ const SignIn = () => {
       </form>
       <p className="container__footer">
         Not out member yet?{" "}
-        <a className="underline" href="/signUp">
+        <Link className="underline" to="/signUp">
           Click here to create new account
-        </a>
+        </Link>
       </p>
     </div>
   );
